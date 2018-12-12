@@ -1,11 +1,62 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>add_product</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Add product
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="basket"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 
 
 <ion-content padding>
-  <p>hola</p>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <!--<div text-center>
+          <h4>Add Product</h4>
+        </div>
+      -->
+        <div padding>
+          <ion-item>
+            <ion-input type="text" placeholder="Name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder="Brand"></ion-input>
+          </ion-item>
+        </div>
+        <div padding>
+          <ion-list>
+            <ion-item>
+              <ion-label>Supermarket</ion-label>
+              <ion-select value="brown" ok-text="Okay" cancel-text="Dismiss">
+                <ion-select-option value="brown">Lider</ion-select-option>
+                <ion-select-option value="blonde">Jumbo</ion-select-option>
+                <ion-select-option value="black">Unimarc</ion-select-option>
+                <ion-select-option value="red">Santa Isabel</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div padding>
+          <ion-item>
+            <ion-input type="text" placeholder="Price"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input disabled="true" type="text" placeholder="Barcode (coming soon)"></ion-input>
+          </ion-item>
+        </div>
+        <div padding>
+          <ion-button size="large" href="" expand="block">Agregar</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
