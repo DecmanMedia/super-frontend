@@ -36,7 +36,7 @@ export class FeedPage implements OnInit {private selectedItem: any;
   constructor(private productService: ProductServiceService) {
     for (let i = 1; i < 11; i++) {
       this.items.push({
-        title: 'Item ' + i,
+        title: 'item' + i,
         note: 'This is item #' + i,
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
