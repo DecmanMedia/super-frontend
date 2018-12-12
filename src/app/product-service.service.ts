@@ -14,6 +14,10 @@ export class ProductServiceService {
   getProducts(){
      return this.http.get("http://localhost:3000/product")
   }
+
+  getProductBySerial(id: number){
+    return this.http.get(`http://localhost:3000/product/serial/${id}`) 
+  }
   
 }
   

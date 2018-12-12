@@ -20,7 +20,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let product of listProducts" [href]="'/product/'+product.id">
+    <ion-item *ngFor="let product of listProducts" [href]="'/product/'+ product.serial">
       <ion-avatar>
         <img src="{{product.picture}}">
       </ion-avatar>
