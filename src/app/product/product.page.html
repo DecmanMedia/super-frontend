@@ -20,31 +20,42 @@
 <ion-content padding>
   <ion-card>
     <ion-card-header>
-        <ion-card-title>Producto: {{title}}</ion-card-title>
+        <ion-card-title>{{product.name}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
         <ion-item>
             <ion-avatar item-start>
-                <img src="https://superimage.sfo2.digitaloceanspaces.com/1928.jpg">
+                <img src="{{product.picture}}">
             </ion-avatar>
              <div>
-               <h2>Marca</h2>
+               <h2>{{product.brand}}</h2>
                <h3>Calificacion</h3>
-               <p>Descripcion</p>
             </div>
           </ion-item>
     </ion-card-content>
   </ion-card>
   <ion-card>
+      <ion-item *ngFor="let product of listProducts" [href]="'/product/'+ product.serial">
+        <ion-avatar>
+          <img src="{{product.picture}}">
+        </ion-avatar>
+        {{product.name}}
+        <div class="item-note" slot="end">
+        </div>
+      </ion-item>
       <ion-list>
-        <ion-item-sliding>
+        <ion-item-sliding *ngFor="let price of product.price" >
           <ion-item>
             <ion-avatar item-start>
-                <img src="https://superimage.sfo2.digitaloceanspaces.com/jumbo.png">
+                <img *ngIf="price.supermarketName=='Jumbo'" src="https://superimage.sfo2.digitaloceanspaces.com/jumbo.png">
+                <img *ngIf="price.supermarketName=='Lider'"src="https://superimage.sfo2.digitaloceanspaces.com/RTgsbMBj_400x400.jpg">
             </ion-avatar>
              <div>
-               <h2>Jumbo</h2>
-               <p>Precio Jumbo</p>
+               <h2>{{price.supermarketName}}</h2>
+               
+            </div>
+            <div slot="end">
+              <h3>${{price.value}}</h3>
             </div>
           </ion-item>
           <ion-item-options side="left">
