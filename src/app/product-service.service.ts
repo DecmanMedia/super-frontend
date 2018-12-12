@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http }  from '@angular/Http';
+import { HttpClient }  from '@angular/common/http';
 
 
 @Injectable({
@@ -7,7 +7,7 @@ import { Http }  from '@angular/Http';
 })
 export class ProductServiceService {
 
-  constructor(public http: Http) {
+  constructor(public http: HttpClient) {
     
   }
   
@@ -19,8 +19,11 @@ export class ProductServiceService {
     return this.http.get(`http://localhost:3000/product/serial/${id}`) 
   }
 
+  addProduct(product){
+    return this.http.post(`http://localhost:3000/product/`, product) 
+    
   getProductsByName(name: String){
-    return this.http.get(`http://localhost:3000/product/name/${name}`) 
+    return this.http.get(`http://localhost:3000/product/name/${name}`)
   }
   
 }
