@@ -1,0 +1,61 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+      <ion-title>
+          {{title}}
+      </ion-title>
+      <ion-buttons slot="primary">
+        <ion-button>
+          <ion-icon  name="search"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon slot="icon-only" name="basket"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+        <ion-card-title">Producto: {{title}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="https://superimage.sfo2.digitaloceanspaces.com/1928.jpg">
+            </ion-avatar>
+             <div>
+               <h2>Marca</h2>
+               <h3>Calificacion</h3>
+               <p>Descripcion</p>
+            </div>
+          </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+      <ion-list>
+        <ion-item-sliding>
+          <ion-item>
+            <ion-avatar item-start>
+                <img src="https://superimage.sfo2.digitaloceanspaces.com/jumbo.png">
+            </ion-avatar>
+             <div>
+               <h2>Jumbo</h2>
+               <p>Precio Jumbo</p>
+            </div>
+          </ion-item>
+          <ion-item-options side="left">
+            <button ion-button (click)>
+              Notificar Oferta
+            </button>
+            <button ion-button color="red">
+              Agregar a Carro
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+  </ion-card>
+</ion-content>
