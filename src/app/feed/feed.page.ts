@@ -27,11 +27,16 @@ export class FeedPage implements OnInit {private selectedItem: any;
   
   public isSearchbarOpened = false;
 
+
+  public listProducts: Array<any>;
+
+
+
   public items: Array<{ title: string; note: string; icon: string }> = [];
   constructor(private productService: ProductServiceService) {
     for (let i = 1; i < 11; i++) {
       this.items.push({
-        title: 'Item ' + i,
+        title: 'item' + i,
         note: 'This is item #' + i,
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
@@ -43,6 +48,7 @@ export class FeedPage implements OnInit {private selectedItem: any;
       data=>{
         const response = (data as any);
         const objReturn = JSON.parse(response._body);
+        this.listProducts = JSON.parse(response._body);
         console.log(objReturn);
       }, error => {
         console.log(error);
