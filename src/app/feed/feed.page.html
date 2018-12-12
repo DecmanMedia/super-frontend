@@ -3,12 +3,13 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
+    <ion-title *ngIf="!isSearchbarOpened">
       SUPER!
     </ion-title>
-    <ion-buttons slot="primary">
-      <ion-button>
-        <ion-icon  name="search"></ion-icon>
+    <ion-searchbar *ngIf="isSearchbarOpened" animated showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+    <ion-buttons *ngIf="!isSearchbarOpened" slot="primary">
+      <ion-button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+        <ion-icon name="search"></ion-icon>
       </ion-button>
       <ion-button>
         <ion-icon slot="icon-only" name="basket"></ion-icon>
@@ -19,11 +20,12 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
+    <ion-item *ngFor="let product of listProducts" [href]="'/product/'+ product.serial">
+      <ion-avatar>
+        <img src="{{product.picture}}">
+      </ion-avatar>
+      {{product.name}}
       <div class="item-note" slot="end">
-        {{item.note}}
       </div>
     </ion-item>
   </ion-list>

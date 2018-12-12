@@ -16,9 +16,19 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
+      title: 'Feed',
+      url: '/feed',
+      icon: 'home'
+    },
+    {
+      title: 'Cart',
+      url: '/cart',
+      icon: 'basket'
+    },
+    {
+      title: 'Add Product',
+      url: '/add_product',
+      icon: 'add-circle'
     }
   ];
 
