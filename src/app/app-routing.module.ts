@@ -9,11 +9,27 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
+    loadChildren: './list/list.module#ListPageModule',
   },
   {
-    path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
+    path: 'cart',
+    loadChildren: './home/home.module#HomePageModule',
+  },
+  { 
+    path: 'product/:id', 
+    loadChildren: './product/product.module#ProductPageModule'
+  },
+  { 
+    path: 'feed', 
+    loadChildren: './feed/feed.module#FeedPageModule'
+  },
+  { 
+    path: 'add-product', 
+    loadChildren: './add-product/add-product.module#AddProductPageModule' 
+  },
+  { 
+    path: 'search-result/:name', 
+    loadChildren: './search-result/search-result.module#SearchResultPageModule' 
   }
 ];
 

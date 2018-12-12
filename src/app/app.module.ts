@@ -17,7 +17,7 @@ import { AppService } from './app.service';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     AppService,
