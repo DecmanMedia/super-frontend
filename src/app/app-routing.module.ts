@@ -24,7 +24,7 @@ const routes: Routes = [
     loadChildren: './feed/feed.module#FeedPageModule'
   },
   { 
-    path: 'add-product', 
+    path: 'add', 
     loadChildren: './add-product/add-product.module#AddProductPageModule' 
   },
   { 

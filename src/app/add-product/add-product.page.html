@@ -50,11 +50,29 @@
             <ion-input type="number" placeholder="Price" #price></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input disabled="true" type="text" placeholder="Barcode (coming soon)" #barcode></ion-input>
+            <ion-input type="number" placeholder="Codigo de barras (Ingresar Manualmente)" #barcode></ion-input>
           </ion-item>
         </div>
         <div padding>
-          <ion-button color="success" size="large" href="" expand="block" (click)="addProduct({ name: name.value, brand: brand.value, price: [supermarketName: super.value, value: price.value]})">Ready to push!</ion-button>
+          <!--<ion-button 
+            color="success" 
+            size="large" 
+            href="" expand="block" 
+            (click)="add({ 
+                name: name.value, 
+                brand: brand.value,
+                serial: barcode.value,
+                picture: {{noImageURL}}, 
+                price: 
+                  [
+                  supermarketName: super.value, 
+                  value: price.value
+                  ]
+                })"
+            >
+              Ready to push!
+          </ion-button>
+          -->
         </div>
       </ion-col>
     </ion-row>

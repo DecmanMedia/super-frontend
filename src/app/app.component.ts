@@ -27,7 +27,7 @@ export class AppComponent {
     },
     {
       title: 'Add Product',
-      url: '/add_product',
+      url: '/add',
       icon: 'add-circle'
     }
   ];
