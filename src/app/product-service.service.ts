@@ -19,8 +19,12 @@ export class ProductServiceService {
     return this.http.get(`http://localhost:3000/product/serial/${id}`) 
   }
 
+  addProduct(product){
+    return this.http.post(`http://localhost:3000/product/`, product) 
+  }
+    
   getProductsByName(name: String){
-    return this.http.get(`http://localhost:3000/product/name/${name}`) 
+    return this.http.get(`http://localhost:3000/product/name/${name}`)
   }
   
 }
