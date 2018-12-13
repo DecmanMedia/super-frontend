@@ -26,10 +26,9 @@ export class ProductPage implements OnInit {
     console.log(this.productSerial);
     this.productService.getProductBySerial(this.productSerial).subscribe(
       data=>{
+        console.log(data);
         const response = (data as any);
-        const objReturn = JSON.parse(response._body);
-        this.product = JSON.parse(response._body)[0];
-        console.log(objReturn);
+        this.product = response[0];
       }, error => {
         console.log(error);
       }
