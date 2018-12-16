@@ -12,19 +12,19 @@ export class ProductServiceService {
   }
   
   getProducts(){
-     return this.http.get("http://localhost:3000/product")
+     return this.http.get("http://165.227.19.176:3000/product")
   }
 
   getProductBySerial(id: number){
-    return this.http.get(`http://localhost:3000/product/serial/${id}`) 
+    return this.http.get(`http://165.227.19.176:3000/product/serial/${id}`) 
   }
 
   /*addProduct(product){
-    return this.http.post(`http://localhost:3000/product/`, product) 
+    return this.http.post(`http://165.227.19.176:3000/product/`, product) 
   }*/
 
   getProductsByName(name: String){
-    return this.http.get(`http://localhost:3000/product/name/${name}`)
+    return this.http.get(`http://165.227.19.176:3000/product/name/${name}`)
   }
   
 }
