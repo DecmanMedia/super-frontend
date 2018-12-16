@@ -3,18 +3,13 @@
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title *ngIf="!isSearchbarOpened">
-        SUPER!
-      </ion-title>
-      <ion-searchbar *ngIf="isSearchbarOpened" animated showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
-      <ion-buttons *ngIf="!isSearchbarOpened" slot="primary">
-        <ion-button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
-          <ion-icon name="search"></ion-icon>
-        </ion-button>
-        <ion-button>
-          <ion-icon slot="icon-only" name="basket"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+      <ion-searchbar 
+        animated
+        showCancelButton="true" 
+        debounce="500"
+        (ionChange)="onSearch($event)"
+        [(ngModel)]="searchInput">
+      </ion-searchbar>
     </ion-toolbar>
 </ion-header>
   

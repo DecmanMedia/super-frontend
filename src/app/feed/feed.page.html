@@ -6,7 +6,7 @@
     <ion-title *ngIf="!isSearchbarOpened">
       SUPER!
     </ion-title>
-    <ion-searchbar *ngIf="isSearchbarOpened" animated showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+    <ion-searchbar *ngIf="isSearchbarOpened" animated showCancelButton="true" [(ngModel)]="myInput" (input)="onSearch($event)" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
     <ion-buttons *ngIf="!isSearchbarOpened" slot="primary">
       <ion-button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
         <ion-icon name="search"></ion-icon>
