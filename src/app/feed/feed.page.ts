@@ -46,10 +46,9 @@ export class FeedPage implements OnInit {private selectedItem: any;
   ngOnInit() {
     this.productService.getProducts().subscribe(
       data=>{
+        console.log(data);
         const response = (data as any);
-        const objReturn = JSON.parse(response._body);
         this.listProducts = JSON.parse(response._body);
-        console.log(objReturn);
       }, error => {
         console.log(error);
       }

@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductServiceService } from './product-service.service';
 
-import { HttpClient }  from '@angular/common/http';
+import { HttpClientModule }  from '@angular/common/http';
 
 
 import { AppService } from './app.service';
@@ -22,7 +22,7 @@ import { AppService } from './app.service';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClient
+    HttpClientModule
   ],
   providers: [
     AppService,
