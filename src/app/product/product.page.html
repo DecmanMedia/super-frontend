@@ -35,14 +35,6 @@
     </ion-card-content>
   </ion-card>
   <ion-card>
-      <ion-item *ngFor="let product of listProducts" [href]="'/product/'+ product.serial">
-        <ion-avatar>
-          <img src="{{product.picture}}">
-        </ion-avatar>
-        {{product.name}}
-        <div class="item-note" slot="end">
-        </div>
-      </ion-item>
       <ion-list>
         <ion-item-sliding *ngFor="let price of product.price" >
           <ion-item>
@@ -52,7 +44,6 @@
             </ion-avatar>
              <div>
                <h2>{{price.supermarketName}}</h2>
-               
             </div>
             <div slot="end">
               <h3>${{price.value}}</h3>

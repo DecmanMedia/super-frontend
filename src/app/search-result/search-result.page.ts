@@ -46,10 +46,9 @@ export class SearchResultPage implements OnInit {
     this.title = this.route.snapshot.paramMap.get('name')
     this.productService.getProductsByName(this.title).subscribe(
       data=>{
+        console.log(data);
         const response = (data as any);
-        const objReturn = JSON.parse(response._body);
-        this.listProducts = JSON.parse(response._body);
-        console.log(objReturn);
+        this.listProducts = response;
       }, error => {
         console.log(error);
       }
