@@ -7,8 +7,8 @@ import { ProductServiceService } from '../product-service.service';
   selector: 'app-feed',
   templateUrl: './feed.page.html',
   styleUrls: ['./feed.page.scss'],
-  providers: [ 
-    ProductServiceService, 
+  providers: [
+    ProductServiceService,
   ]
 })
 export class FeedPage implements OnInit {private selectedItem: any;
@@ -24,7 +24,7 @@ export class FeedPage implements OnInit {private selectedItem: any;
     'bluetooth',
     'build'
   ];
-  
+
   public isSearchbarOpened = false;
 
 
@@ -46,10 +46,9 @@ export class FeedPage implements OnInit {private selectedItem: any;
   ngOnInit() {
     this.productService.getProducts().subscribe(
       data=>{
+        console.log(data);
         const response = (data as any);
-        const objReturn = JSON.parse(response._body);
-        this.listProducts = JSON.parse(response._body);
-        console.log(objReturn);
+        this.listProducts = response;
       }, error => {
         console.log(error);
       }
