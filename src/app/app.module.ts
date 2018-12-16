@@ -10,8 +10,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductServiceService } from './product-service.service';
 
-import { HttpModule }  from '@angular/Http';
+import { HttpClientModule }  from '@angular/common/http';
 
+
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,9 +21,11 @@ import { HttpModule }  from '@angular/Http';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule,HttpModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
+    AppService,
     StatusBar,
     SplashScreen,
     ProductServiceService,
