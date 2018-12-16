@@ -48,7 +48,7 @@ export class FeedPage implements OnInit {private selectedItem: any;
       data=>{
         console.log(data);
         const response = (data as any);
-        this.listProducts = JSON.parse(response._body);
+        this.listProducts = response;
       }, error => {
         console.log(error);
       }
