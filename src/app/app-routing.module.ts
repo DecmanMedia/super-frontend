@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: './add-product/add-product.module#AddProductPageModule' 
   },
   { 
+    path: 'add-price/:id/:serial', 
+    loadChildren: './add-price/add-price.module#AddPricePageModule' 
+  },
+  { 
     path: 'search-result/:name', 
     loadChildren: './search-result/search-result.module#SearchResultPageModule' 
   }
