@@ -30,6 +30,15 @@ export class ProductPage implements OnInit {
     console.log(this.searchInput);
   }
 
+  doRefresh(event) {
+    console.log('Begin async operation');
+    this.ngOnInit();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
+
   ngOnInit(){
     this.productSerial = this.route.snapshot.paramMap.get('id');
     console.log(this.productSerial);
