@@ -25,6 +25,15 @@ export class FeedPage implements OnInit {
     this.router.navigateByUrl(`/search-result/${this.searchInput}`)
     console.log(this.searchInput);
   }
+  
+  doRefresh(event) {
+    console.log('Begin async operation');
+    this.ngOnInit();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
 
   ngOnInit() {
     this.searchInput="";
