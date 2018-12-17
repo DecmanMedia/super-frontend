@@ -12,12 +12,20 @@ import { Router } from '@angular/router';
   ]
 })
 export class AddProductPage implements OnInit {
+  //Search neccesary variables
+  public isSearchbarOpened = false;
+  private searchInput: any="";
 
   constructor(
     private productService: ProductServiceService,
     private router: Router
     ) { }
 
+  onSearch(){
+    this.router.navigateByUrl(`/search-result/${this.searchInput}`)
+    console.log(this.searchInput);
+  }
+  
   ngOnInit() {
   }
 
