@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductServiceService } from '../product-service.service';
 
 
@@ -12,15 +12,24 @@ import { ProductServiceService } from '../product-service.service';
   ]
 })
 export class AddPricePage implements OnInit {
-
+  //Search Variables
+  public isSearchbarOpened = false;
+  private searchInput: any="";
+  //Product Varibles
   private productID: String;
   private productSerial: String;
 
   constructor(
     private productService: ProductServiceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
     ) { }
 
+  onSearch(){
+    this.router.navigateByUrl(`/search-result/${this.searchInput}`)
+    console.log(this.searchInput);
+  }
+  
   ngOnInit() {
     this.productID = this.route.snapshot.paramMap.get('id');
     this.productSerial = this.route.snapshot.paramMap.get('serial');
