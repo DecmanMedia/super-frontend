@@ -8,10 +8,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: './list/list.module#ListPageModule',
-  },
-  {
     path: 'cart',
     loadChildren: './home/home.module#HomePageModule',
   },
@@ -20,7 +16,7 @@ const routes: Routes = [
     loadChildren: './product/product.module#ProductPageModule'
   },
   { 
-    path: 'feed', 
+    path: 'home', 
     loadChildren: './feed/feed.module#FeedPageModule'
   },
   { 

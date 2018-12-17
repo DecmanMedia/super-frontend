@@ -16,18 +16,13 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'Feed',
-      url: '/feed',
-      icon: 'home'
-    },
-    {
       title: 'Cart',
       url: '/cart',
       icon: 'basket'
     },
     {
       title: 'Add Product',
-      url: '/add_product',
+      url: '/add-product',
       icon: 'add-circle'
     }
   ];
