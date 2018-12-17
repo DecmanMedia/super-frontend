@@ -49,6 +49,8 @@
             <ion-avatar item-start>
                 <img *ngIf="price.supermarketName=='Jumbo'" src="https://superimage.sfo2.digitaloceanspaces.com/jumbo.png">
                 <img *ngIf="price.supermarketName=='Lider'"src="https://superimage.sfo2.digitaloceanspaces.com/RTgsbMBj_400x400.jpg">
+                <img *ngIf="price.supermarketName=='Unimarc'"src="https://superimage.sfo2.digitaloceanspaces.com/unimarc.jpg">
+                <img *ngIf="price.supermarketName=='SantaIsabel'"src="https://superimage.sfo2.digitaloceanspaces.com/Santa%20Isabel.png">
             </ion-avatar>
              <div>
                <h2>{{price.supermarketName}}</h2>
@@ -69,4 +71,11 @@
         </ion-item-sliding>
       </ion-list>
   </ion-card>
+  <div padding>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button [href]="'/add-price/'+ product._id +'/'+ product.serial">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
 </ion-content>
