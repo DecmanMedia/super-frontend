@@ -8,6 +8,7 @@
         showCancelButton="true" 
         debounce="500"
         (ionChange)="onSearch($event)"
+        (ionCancel)="goHome()"
         [(ngModel)]="searchInput">
       </ion-searchbar>
     </ion-toolbar>

@@ -36,11 +36,13 @@ export class FeedPage implements OnInit {private selectedItem: any;
   }
   onSearch(){
     this.router.navigateByUrl(`/search-result/${this.searchInput}`)
+    this.router
     console.log(this.searchInput);
   }
 
   ngOnInit() {
     this.searchInput="";
+    this.isSearchbarOpened = false;    
     this.productService.getProducts().subscribe(
       data=>{
         console.log(data);

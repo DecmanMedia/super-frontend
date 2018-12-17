@@ -12,6 +12,7 @@
         showCancelButton="true" 
         debounce="500"
         (ionChange)="onSearch($event)"
+        (ionCancel)="isSearchbarOpened=false"
         [(ngModel)]="searchInput">
     </ion-searchbar>
     <ion-buttons *ngIf="!isSearchbarOpened" slot="primary">
