@@ -1,9 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>cart</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf="!isSearchbarOpened">
+      Carrito
+    </ion-title>
+    <ion-searchbar
+        *ngIf="isSearchbarOpened" 
+        animated
+        showCancelButton="true" 
+        debounce="500"
+        (ionChange)="onSearch($event)"
+        (ionCancel)="isSearchbarOpened=false"
+        [(ngModel)]="searchInput">
+    </ion-searchbar>
+    <ion-buttons *ngIf="!isSearchbarOpened" slot="primary">
+      <ion-button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="basket"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
+  <div id="wrapper">
+    <h1>Proximamente acá estara tu lista de compras</h1>
+  </div>
 </ion-content>
