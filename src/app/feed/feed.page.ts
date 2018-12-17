@@ -40,6 +40,7 @@ export class FeedPage implements OnInit {private selectedItem: any;
   }
 
   ngOnInit() {
+    this.searchInput="";
     this.productService.getProducts().subscribe(
       data=>{
         console.log(data);
