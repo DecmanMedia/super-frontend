@@ -7,10 +7,6 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  {
-    path: 'cart',
-    loadChildren: './home/home.module#HomePageModule',
-  },
   { 
     path: 'product/:id', 
     loadChildren: './product/product.module#ProductPageModule'
@@ -30,7 +26,12 @@ const routes: Routes = [
   { 
     path: 'search-result/:name', 
     loadChildren: './search-result/search-result.module#SearchResultPageModule' 
+  },
+  { 
+    path: 'cart', 
+    loadChildren: './cart/cart.module#CartPageModule' 
   }
+
 ];
 
 @NgModule({
