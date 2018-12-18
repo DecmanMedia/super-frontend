@@ -43,8 +43,8 @@
         <div padding>
           <ion-list>
             <ion-item>
-              <ion-label>Supermarket</ion-label>
-              <ion-select value="Lider" ok-text="Okay" cancel-text="Dismiss" #super>
+              <ion-label>Supermercado</ion-label>
+              <ion-select interface="popover" value="Lider" ok-text="Okay" cancel-text="Dismiss" #super>
                 <ion-select-option value="Lider">Lider</ion-select-option>
                 <ion-select-option value="Jumbo">Jumbo</ion-select-option>
                 <ion-select-option value="Unimarc">Unimarc</ion-select-option>
@@ -57,7 +57,7 @@
           </ion-list>
         </div>
         <div padding>
-          <ion-button color="success" size="large" [href]="'/product/'+productSerial" expand="block" (click)="add_price({ supermarketName: super.value, value: newprice.value })">Add</ion-button>
+          <ion-button color="success" size="large" [href]="'/product/'+productSerial" expand="block" (click)="add_price({ supermarketName: super.value, value: newprice.value })">Añadir</ion-button>
         </div>
       </ion-col>
     </ion-row>
