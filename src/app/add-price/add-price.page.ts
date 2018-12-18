@@ -42,6 +42,7 @@ export class AddPricePage implements OnInit {
       console.log("result: ")
       console.log(product)
     })
+    this.router.navigateByUrl(`/product/${this.productSerial}`)
   }
 
 }

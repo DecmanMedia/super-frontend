@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   ]
 })
 export class FeedPage implements OnInit {
+  //Search variables
   public isSearchbarOpened = false;
   private searchInput: any="";
 
