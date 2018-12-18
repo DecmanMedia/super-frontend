@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductServiceService } from '../product-service.service';
 
 @Component({
@@ -11,15 +11,33 @@ import { ProductServiceService } from '../product-service.service';
   ]
 })
 export class ProductPage implements OnInit {
-
+  //Product informacion variables
   private productSerial: any;
   private product: any;
+  //Search neccesary variables
+  public isSearchbarOpened = false;
+  private searchInput: any="";
 
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductServiceService
+    private productService: ProductServiceService,
+    private router: Router
     ) { }
+
+  onSearch(){
+    this.router.navigateByUrl(`/search-result/${this.searchInput}`)
+    console.log(this.searchInput);
+  }
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+    this.ngOnInit();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
 
   ngOnInit(){
     this.productSerial = this.route.snapshot.paramMap.get('id');

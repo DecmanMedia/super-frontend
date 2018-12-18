@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title *ngIf="!isSearchbarOpened">
-      SUPER!
+      Carrito
     </ion-title>
     <ion-searchbar
         *ngIf="isSearchbarOpened" 
@@ -19,30 +19,12 @@
       <ion-button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
         <ion-icon name="search"></ion-icon>
       </ion-button>
-      <ion-button href="/cart">
-        <ion-icon slot="icon-only" name="basket"></ion-icon>
-      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-  <ion-list>
-    <ion-item *ngFor="let product of listProducts" [href]="'/product/'+ product.serial">
-      <ion-avatar>
-        <img src="{{product.picture}}">
-      </ion-avatar>
-      {{product.name}}
-      <div class="item-note" slot="end">
-      </div>
-    </ion-item>
-  </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
+<ion-content padding>
+  <div id="wrapper">
+    <h1>Proximamente acá estara tu lista de compras</h1>
+  </div>
 </ion-content>

@@ -3,17 +3,28 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      Add price
+    <ion-title *ngIf="!isSearchbarOpened">
+      Agregar Precio Nuevo
     </ion-title>
-    <ion-buttons slot="primary">
-      <ion-button>
+    <ion-searchbar
+        *ngIf="isSearchbarOpened" 
+        animated
+        showCancelButton="true" 
+        debounce="500"
+        (ionChange)="onSearch($event)"
+        (ionCancel)="isSearchbarOpened=false"
+        [(ngModel)]="searchInput">
+    </ion-searchbar>
+    <ion-buttons *ngIf="!isSearchbarOpened" slot="primary">
+      <ion-button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+      <ion-button href="/cart">
         <ion-icon slot="icon-only" name="basket"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 
 
 <ion-content padding>
@@ -38,6 +49,9 @@
                 <ion-select-option value="Jumbo">Jumbo</ion-select-option>
                 <ion-select-option value="Unimarc">Unimarc</ion-select-option>
                 <ion-select-option value="SantaIsabel">Santa Isabel</ion-select-option>
+                <ion-select-option value="Mayorista 10">Mayorista 10</ion-select-option>
+                <ion-select-option value="Acuenta">Acuenta</ion-select-option>
+                <ion-select-option value="Monserrat">Monserrat</ion-select-option>
               </ion-select>
             </ion-item>
           </ion-list>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductServiceService } from '../product-service.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,9 +12,20 @@ import { ProductServiceService } from '../product-service.service';
   ]
 })
 export class AddProductPage implements OnInit {
+  //Search neccesary variables
+  public isSearchbarOpened = false;
+  private searchInput: any="";
 
-  constructor(private productService: ProductServiceService) { }
+  constructor(
+    private productService: ProductServiceService,
+    private router: Router
+    ) { }
 
+  onSearch(){
+    this.router.navigateByUrl(`/search-result/${this.searchInput}`)
+    console.log(this.searchInput);
+  }
+  
   ngOnInit() {
   }
 
@@ -24,6 +36,7 @@ export class AddProductPage implements OnInit {
       console.log("result: ")
       console.log(product)
     })
+    this.router.navigateByUrl("/home")
   }
 
 }

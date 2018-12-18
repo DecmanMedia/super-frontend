@@ -12,20 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
     ProductServiceService,
   ]
 })
-export class FeedPage implements OnInit {private selectedItem: any;
-  private icons = [
-    'flask',
-    'wifi',
-    'beer',
-    'football',
-    'basketball',
-    'paper-plane',
-    'american-football',
-    'boat',
-    'bluetooth',
-    'build'
-  ];
-
+export class FeedPage implements OnInit {
   public isSearchbarOpened = false;
   private searchInput: any="";
 
@@ -36,8 +23,16 @@ export class FeedPage implements OnInit {private selectedItem: any;
   }
   onSearch(){
     this.router.navigateByUrl(`/search-result/${this.searchInput}`)
-    this.router
     console.log(this.searchInput);
+  }
+  
+  doRefresh(event) {
+    console.log('Begin async operation');
+    this.ngOnInit();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
   }
 
   ngOnInit() {
