@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductServiceService } from '../product-service.service';
+import { ShoppingListService } from '../shopping-list.service';
 
 @Component({
   selector: 'app-product',
@@ -22,7 +23,8 @@ export class ProductPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductServiceService,
-    private router: Router
+    private router: Router,
+    public shoppingService: ShoppingListService
     ) { }
 
   onSearch(){
@@ -38,6 +40,14 @@ export class ProductPage implements OnInit {
       event.target.complete();
     }, 2000);
   }
+
+  add(input: any){
+    console.log(input)
+    this.shoppingService.addToCart(input)
+    console.log(this.shoppingService.GlobalShoppingList)
+  }
+
+  
 
   ngOnInit(){
     this.productSerial = this.route.snapshot.paramMap.get('id');

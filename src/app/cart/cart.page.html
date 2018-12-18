@@ -23,8 +23,41 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <div id="wrapper">
-    <h1>Proximamente acá estara tu lista de compras</h1>
-  </div>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item *ngFor="let product of cartList">
+        <ion-avatar item-start>
+            <img *ngIf="product.supermarketName=='Jumbo'" src="https://superimage.sfo2.digitaloceanspaces.com/jumbo.png">
+            <img *ngIf="product.supermarketName=='Lider'"src="https://superimage.sfo2.digitaloceanspaces.com/RTgsbMBj_400x400.jpg">
+            <img *ngIf="product.supermarketName=='Unimarc'"src="https://superimage.sfo2.digitaloceanspaces.com/unimarc.jpg">
+            <img *ngIf="product.supermarketName=='SantaIsabel'"src="https://superimage.sfo2.digitaloceanspaces.com/Santa%20Isabel.png">
+            <img *ngIf="product.supermarketName=='Mayorista 10'"src="https://superimage.sfo2.digitaloceanspaces.com/Mayorista10.jpg">
+            <img *ngIf="product.supermarketName=='Monserrat'"src="https://superimage.sfo2.digitaloceanspaces.com/Monserrat.png">
+            <img *ngIf="product.supermarketName=='Acuenta'"src="https://superimage.sfo2.digitaloceanspaces.com/Acuenta.svg"> 
+        </ion-avatar>
+      {{product.name}}
+      <div class="item-note" slot="end">
+        ${{product.price}}
+      </div>
+      <div class="item-note" slot="end">
+          Cantidad: {{product.quantity}}
+      </div>
+    </ion-item>
+  </ion-list>
+  <!--
+    <div *ngIf="selectedItem" padding>
+      You navigated here from <b>{{selectedItem.title }}</b>
+    </div>
+  -->
 </ion-content>
+
+<ion-footer>
+    <ion-fab  vertical="bottom" horizontal="start" slot="fixed">
+      <ion-fab-button (click)="cleanCart()">
+        <ion-icon name="trash"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-footer>

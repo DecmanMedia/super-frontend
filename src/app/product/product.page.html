@@ -46,7 +46,7 @@
           </ion-item>
     </ion-card-content>
   </ion-card>
-  <ion-card>
+  <ion-card class="card-prices">
       <ion-list>
         <ion-item-sliding *ngFor="let price of product.price" >
           <ion-item>
@@ -71,18 +71,19 @@
             <button ion-button>
               Notificar Oferta
             </button>
-            <button ion-button>
+            <button ion-button (click)="add({serial: product.serial, name : product.name, brand : product.brand, quantity: 1, price: price.value, supermarketName: price.supermarketName})">
               Agregar a Carro
             </button>
           </ion-item-options>
         </ion-item-sliding>
       </ion-list>
   </ion-card>
-  <div padding>
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button [href]="'/add-price/'+ product._id +'/'+ product.serial">
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-  </div>
 </ion-content>
+
+<ion-footer>
+  <ion-fab  vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button [href]="'/add-price/'+ product._id +'/'+ product.serial">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-footer>

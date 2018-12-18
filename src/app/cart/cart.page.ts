@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductServiceService } from '../product-service.service';
+import { ShoppingListService } from '../shopping-list.service';
 import { Router } from '@angular/router';
+import { importType } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-cart',
@@ -12,10 +14,13 @@ export class CartPage implements OnInit {
   public isSearchbarOpened = false;
   private searchInput: any="";
 
+  public cartList : Array<any>;
+  private response : Array<any> = [];
 
   constructor(
     private productService: ProductServiceService, 
-    private router: Router
+    private router: Router,
+    public ShoppingService: ShoppingListService
     ) { }
 
   onSearch(){
@@ -23,9 +28,27 @@ export class CartPage implements OnInit {
     console.log(this.searchInput);
   }
 
-  ngOnInit() {
-    this.searchInput="";
-    this.isSearchbarOpened = false; 
+  doRefresh(event) {
+    console.log('Begin async operation');
+    this.ngOnInit();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
   }
+
+  cleanCart(){
+    this.ShoppingService.cleanList()
+    this.ngOnInit()
+  }
+
+  ngOnInit() {
+    this.ShoppingService.updateLocalCart();
+    this.cartList= this.ShoppingService.GlobalShoppingList;
+    console.log(this.ShoppingService.GlobalShoppingList);
+    this.searchInput="";
+    this.isSearchbarOpened = false;
+  }
+
 
 }
