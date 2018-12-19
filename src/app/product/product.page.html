@@ -47,7 +47,7 @@
     </ion-card-content>
   </ion-card>
   <ion-card class="card-prices">
-      <ion-list>
+      <ion-list #slidingList>
         <ion-item-sliding *ngFor="let price of product.price" >
           <ion-item>
             <ion-avatar item-start>
@@ -67,7 +67,7 @@
               <h3>${{price.value}}</h3>
             </div>
           </ion-item>
-          <ion-item-options side="left">
+          <ion-item-options (click)="delete()" side="left">
             <button ion-button>
               Notificar Oferta
             </button>

@@ -27,7 +27,7 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-list>
+  <ion-list class="list-cart">
     <ion-item *ngFor="let product of cartList">
         <ion-avatar item-start>
             <img *ngIf="product.supermarketName=='Jumbo'" src="https://superimage.sfo2.digitaloceanspaces.com/jumbo.png">
@@ -60,4 +60,4 @@
         <ion-icon name="trash"></ion-icon>
       </ion-fab-button>
     </ion-fab>
-  </ion-footer>
+</ion-footer>

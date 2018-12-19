@@ -27,7 +27,7 @@ export class SearchResultPage implements OnInit {
 
   private title: String;
   public isSearchbarOpened = false;
-  private searchInput: any="";
+  public searchInput: any="";
   public listProducts: Array<any>;
 
   public items: Array<{ title: string; note: string; icon: string }> = [];

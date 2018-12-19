@@ -17,7 +17,7 @@ export class AddPricePage implements OnInit {
   private searchInput: any="";
   //Product Varibles
   private productID: String;
-  private productSerial: String;
+  public productSerial: String;
 
   constructor(
     private productService: ProductServiceService,
