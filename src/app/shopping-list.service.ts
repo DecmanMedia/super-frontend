@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ProductPage } from './product/product.page';
 import { Storage } from '@ionic/storage';
 
+
 @Injectable({
   providedIn: 'root'
 })

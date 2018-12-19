@@ -12,19 +12,6 @@ import { Location } from "@angular/common";
   ]
 })
 export class SearchResultPage implements OnInit {
-  private icons = [
-    'flask',
-    'wifi',
-    'beer',
-    'football',
-    'basketball',
-    'paper-plane',
-    'american-football',
-    'boat',
-    'bluetooth',
-    'build'
-  ];
-
   private title: String;
   public isSearchbarOpened = false;
   public searchInput: any="";
@@ -38,17 +25,9 @@ export class SearchResultPage implements OnInit {
       private router: Router,
       private location: Location
     ) {
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'gato ' + i,
-        note: 'This is Sparta #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
   }
 
   //constructor(private route: ActivatedRoute) { }
-
   onSearch(){
     //this.router.navigateByUrl(`/search-result/${this.searchInput}`)
     this.productService.getProductsByName(this.searchInput).subscribe(
@@ -63,7 +42,8 @@ export class SearchResultPage implements OnInit {
     )
     console.log(this.searchInput);
   }
-
+  
+  //Navigation Methods
   goBack(){
     this.location.back();
   }
