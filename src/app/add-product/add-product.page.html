@@ -3,11 +3,23 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
+    <ion-title *ngIf="!isSearchbarOpened">
       Add product
     </ion-title>
-    <ion-buttons slot="primary">
-      <ion-button>
+    <ion-searchbar
+        *ngIf="isSearchbarOpened" 
+        animated
+        showCancelButton="true" 
+        debounce="500"
+        (ionChange)="onSearch($event)"
+        (ionCancel)="isSearchbarOpened=false"
+        [(ngModel)]="searchInput">
+    </ion-searchbar>
+    <ion-buttons *ngIf="!isSearchbarOpened" slot="primary">
+      <ion-button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+      <ion-button href="/cart">
         <ion-icon slot="icon-only" name="basket"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -26,35 +38,39 @@
       -->
         <div padding>
           <ion-item>
-            <ion-input type="text" placeholder="Name" #name></ion-input>
+            <ion-input type="text" placeholder="Nombre" #name></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input type="text" placeholder="Brand" #brand></ion-input>
+            <ion-input type="text" placeholder="Marca" #brand></ion-input>
           </ion-item>
         </div>
         <div padding>
           <ion-list>
             <ion-item>
-              <ion-label>Supermarket</ion-label>
+              <ion-label>Supermercado</ion-label>
               <ion-select value="Lider" ok-text="Okay" cancel-text="Dismiss" #super>
                 <ion-select-option value="Lider">Lider</ion-select-option>
                 <ion-select-option value="Jumbo">Jumbo</ion-select-option>
                 <ion-select-option value="Unimarc">Unimarc</ion-select-option>
                 <ion-select-option value="SantaIsabel">Santa Isabel</ion-select-option>
+                <ion-select-option value="Mayorista 10">Mayorista 10</ion-select-option>
+                <ion-select-option value="Acuenta">Acuenta</ion-select-option>
+                <ion-select-option value="Monserrat">Monserrat</ion-select-option>
               </ion-select>
             </ion-item>
           </ion-list>
         </div>
         <div padding>
           <ion-item>
-            <ion-input type="number" placeholder="Price" #price></ion-input>
+            <ion-input type="number" placeholder="Precio" #price></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input disabled="true" type="text" placeholder="Barcode (coming soon)" #barcode></ion-input>
+            <ion-input required="true" disabled="false" type="text" placeholder="Codigo de Barras (Manualmente)" #barcode></ion-input>
           </ion-item>
         </div>
         <div padding>
-          <ion-button color="success" size="large" href="" expand="block" (click)="addProduct({ name: name.value, brand: brand.value, price: [supermarketName: super.value, value: price.value]})">Ready to push!</ion-button>
+          
+          <ion-button color="success" size="large" expand="block" (click)="create_product({ name: name.value, brand: brand.value, serial: barcode.value, picture: 'https://superimage.sfo2.digitaloceanspaces.com/1024px-No_image_available.svg.png', price: [{supermarketName: super.value, value: price.value}]})">Add</ion-button>
         </div>
       </ion-col>
     </ion-row>

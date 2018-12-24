@@ -3,66 +3,75 @@
         <ion-buttons slot="start">
           <ion-back-button defaultHref="home"></ion-back-button>
         </ion-buttons>
-      <ion-title>
-          {{title}}
-      </ion-title>
-      <ion-buttons slot="primary">
-        <ion-button>
-          <ion-icon  name="search"></ion-icon>
-        </ion-button>
-        <ion-button>
-          <ion-icon slot="icon-only" name="basket"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+        <ion-title *ngIf="!isSearchbarOpened">
+          {{product.name}}
+        </ion-title>
+        <ion-searchbar
+            *ngIf="isSearchbarOpened" 
+            animated
+            showCancelButton="true" 
+            debounce="500"
+            (ionChange)="onSearch($event)"
+            (ionCancel)="isSearchbarOpened=false"
+            [(ngModel)]="searchInput">
+        </ion-searchbar>
+        <ion-buttons *ngIf="!isSearchbarOpened" slot="primary">
+          <ion-button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+            <ion-icon name="search"></ion-icon>
+          </ion-button>
+          <ion-button href="/cart">
+            <ion-icon slot="icon-only" name="basket"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
 
 <ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-card>
     <ion-card-header>
         <ion-card-title>{{product.name}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
         <ion-item>
-            <ion-avatar item-start>
+            <a class="item-avatar" item-start>
                 <img src="{{product.picture}}">
-            </ion-avatar>
+            </a>
              <div>
-               <h2>{{product.brand}}</h2>
-               <h3>Calificacion</h3>
+               <h1>{{product.brand}}</h1>
+               <h3>*Calificacion*</h3>
             </div>
           </ion-item>
     </ion-card-content>
   </ion-card>
-  <ion-card>
-      <ion-item *ngFor="let product of listProducts" [href]="'/product/'+ product.serial">
-        <ion-avatar>
-          <img src="{{product.picture}}">
-        </ion-avatar>
-        {{product.name}}
-        <div class="item-note" slot="end">
-        </div>
-      </ion-item>
-      <ion-list>
+  <ion-card class="card-prices">
+      <ion-list #slidingList>
         <ion-item-sliding *ngFor="let price of product.price" >
           <ion-item>
             <ion-avatar item-start>
                 <img *ngIf="price.supermarketName=='Jumbo'" src="https://superimage.sfo2.digitaloceanspaces.com/jumbo.png">
                 <img *ngIf="price.supermarketName=='Lider'"src="https://superimage.sfo2.digitaloceanspaces.com/RTgsbMBj_400x400.jpg">
+                <img *ngIf="price.supermarketName=='Unimarc'"src="https://superimage.sfo2.digitaloceanspaces.com/unimarc.jpg">
+                <img *ngIf="price.supermarketName=='SantaIsabel'"src="https://superimage.sfo2.digitaloceanspaces.com/Santa%20Isabel.png">
+                <img *ngIf="price.supermarketName=='Mayorista 10'"src="https://superimage.sfo2.digitaloceanspaces.com/Mayorista10.jpg">
+                <img *ngIf="price.supermarketName=='Monserrat'"src="https://superimage.sfo2.digitaloceanspaces.com/Monserrat.png">
+                <img *ngIf="price.supermarketName=='Acuenta'"src="https://superimage.sfo2.digitaloceanspaces.com/Acuenta.svg">
+                
             </ion-avatar>
              <div>
                <h2>{{price.supermarketName}}</h2>
-               
             </div>
             <div slot="end">
               <h3>${{price.value}}</h3>
             </div>
           </ion-item>
-          <ion-item-options side="left">
+          <ion-item-options (click)="delete()" side="left">
             <button ion-button>
               Notificar Oferta
             </button>
-            <button ion-button>
+            <button ion-button (click)="add({serial: product.serial, name : product.name, brand : product.brand, quantity: 1, price: price.value, supermarketName: price.supermarketName})">
               Agregar a Carro
             </button>
           </ion-item-options>
@@ -70,3 +79,11 @@
       </ion-list>
   </ion-card>
 </ion-content>
+
+<ion-footer>
+  <ion-fab  vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button [href]="'/add-price/'+ product._id +'/'+ product.serial">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-footer>

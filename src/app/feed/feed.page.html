@@ -6,12 +6,20 @@
     <ion-title *ngIf="!isSearchbarOpened">
       SUPER!
     </ion-title>
-    <ion-searchbar *ngIf="isSearchbarOpened" animated showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+    <ion-searchbar
+        *ngIf="isSearchbarOpened" 
+        animated
+        showCancelButton="true" 
+        debounce="500"
+        (ionChange)="onSearch($event)"
+        (ionCancel)="isSearchbarOpened=false"
+        [(ngModel)]="searchInput">
+    </ion-searchbar>
     <ion-buttons *ngIf="!isSearchbarOpened" slot="primary">
       <ion-button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
         <ion-icon name="search"></ion-icon>
       </ion-button>
-      <ion-button>
+      <ion-button href="/cart">
         <ion-icon slot="icon-only" name="basket"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -19,6 +27,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-list>
     <ion-item *ngFor="let product of listProducts" [href]="'/product/'+ product.serial">
       <ion-avatar>

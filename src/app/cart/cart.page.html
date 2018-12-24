@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf="!isSearchbarOpened">
+      Carrito
+    </ion-title>
+    <ion-searchbar
+        *ngIf="isSearchbarOpened" 
+        animated
+        showCancelButton="true" 
+        debounce="500"
+        (ionChange)="onSearch($event)"
+        (ionCancel)="isSearchbarOpened=false"
+        [(ngModel)]="searchInput">
+    </ion-searchbar>
+    <ion-buttons *ngIf="!isSearchbarOpened" slot="primary">
+      <ion-button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list class="list-cart">
+    <ion-item *ngFor="let product of cartList">
+        <ion-avatar item-start>
+            <img *ngIf="product.supermarketName=='Jumbo'" src="https://superimage.sfo2.digitaloceanspaces.com/jumbo.png">
+            <img *ngIf="product.supermarketName=='Lider'"src="https://superimage.sfo2.digitaloceanspaces.com/RTgsbMBj_400x400.jpg">
+            <img *ngIf="product.supermarketName=='Unimarc'"src="https://superimage.sfo2.digitaloceanspaces.com/unimarc.jpg">
+            <img *ngIf="product.supermarketName=='SantaIsabel'"src="https://superimage.sfo2.digitaloceanspaces.com/Santa%20Isabel.png">
+            <img *ngIf="product.supermarketName=='Mayorista 10'"src="https://superimage.sfo2.digitaloceanspaces.com/Mayorista10.jpg">
+            <img *ngIf="product.supermarketName=='Monserrat'"src="https://superimage.sfo2.digitaloceanspaces.com/Monserrat.png">
+            <img *ngIf="product.supermarketName=='Acuenta'"src="https://superimage.sfo2.digitaloceanspaces.com/Acuenta.svg"> 
+        </ion-avatar>
+      {{product.name}}
+      <div class="item-note" slot="end">
+        ${{product.price}}
+      </div>
+      <div class="item-note" slot="end">
+          Cantidad: {{product.quantity}}
+      </div>
+    </ion-item>
+  </ion-list>
+  <!--
+    <div *ngIf="selectedItem" padding>
+      You navigated here from <b>{{selectedItem.title }}</b>
+    </div>
+  -->
+</ion-content>
+
+<ion-footer>
+    <ion-fab  vertical="bottom" horizontal="start" slot="fixed">
+      <ion-fab-button (click)="cleanCart()">
+        <ion-icon name="trash"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</ion-footer>

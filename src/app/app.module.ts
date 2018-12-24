@@ -12,7 +12,7 @@ import { ProductServiceService } from './product-service.service';
 
 import { HttpClientModule }  from '@angular/common/http';
 
-
+import { IonicStorageModule } from '@ionic/storage';
 import { AppService } from './app.service';
 
 @NgModule({
@@ -21,8 +21,9 @@ import { AppService } from './app.service';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule,HttpClientModule
-
+    AppRoutingModule,
+    HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     AppService,

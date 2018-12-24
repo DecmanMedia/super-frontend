@@ -7,20 +7,12 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  {
-    path: 'home',
-    loadChildren: './list/list.module#ListPageModule',
-  },
-  {
-    path: 'cart',
-    loadChildren: './home/home.module#HomePageModule',
-  },
   { 
     path: 'product/:id', 
     loadChildren: './product/product.module#ProductPageModule'
   },
   { 
-    path: 'feed', 
+    path: 'home', 
     loadChildren: './feed/feed.module#FeedPageModule'
   },
   { 
@@ -28,9 +20,18 @@ const routes: Routes = [
     loadChildren: './add-product/add-product.module#AddProductPageModule' 
   },
   { 
+    path: 'add-price/:id/:serial', 
+    loadChildren: './add-price/add-price.module#AddPricePageModule' 
+  },
+  { 
     path: 'search-result/:name', 
     loadChildren: './search-result/search-result.module#SearchResultPageModule' 
+  },
+  { 
+    path: 'cart', 
+    loadChildren: './cart/cart.module#CartPageModule' 
   }
+
 ];
 
 @NgModule({
