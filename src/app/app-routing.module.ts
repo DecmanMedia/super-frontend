@@ -30,7 +30,12 @@ const routes: Routes = [
   { 
     path: 'cart', 
     loadChildren: './cart/cart.module#CartPageModule' 
+  },
+  { 
+    path: 'scan', 
+    loadChildren: './barcode-scanner/barcode-scanner.module#BarcodeScannerPageModule' 
   }
+
 
 ];
 
