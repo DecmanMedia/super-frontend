@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductServiceService } from '../product-service.service';
 import { Router } from '@angular/router';
+import { BarcodeScanner,BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 
 
 @Component({
@@ -16,10 +17,24 @@ export class AddProductPage implements OnInit {
   public isSearchbarOpened = false;
   private searchInput: any="";
 
+  //Barcode Scanner
+  barcodeScannerOptions : BarcodeScannerOptions = {showTorchButton:true}
+
   constructor(
     private productService: ProductServiceService,
+    private barcodeScanner: BarcodeScanner,
     private router: Router
     ) { }
+
+  //Scan Barcode for search
+  goToScan(){
+    this.barcodeScanner.scan(this.barcodeScannerOptions).then(barcodeData => {
+      this.router.navigateByUrl(`/product/${barcodeData["text"]}`)
+     }).catch(err => {
+         console.log('Error', err);
+     });
+    
+  }
 
   onSearch(){
     this.router.navigateByUrl(`/search-result/${this.searchInput}`)
