@@ -41,17 +41,17 @@
       -->
         <div padding>
           <ion-item>
-            <ion-input type="text" placeholder="Nombre" #name></ion-input>
+            <ion-input type="text" placeholder="Nombre" [(ngModel)]="product.name"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input type="text" placeholder="Marca" #brand></ion-input>
+            <ion-input type="text" placeholder="Marca" [(ngModel)]="product.brand"></ion-input>
           </ion-item>
         </div>
         <div padding>
           <ion-list>
             <ion-item>
               <ion-label>Supermercado</ion-label>
-              <ion-select value="Lider" ok-text="Okay" cancel-text="Dismiss" #super>
+              <ion-select placeholder="Seleccione Supermercado" [(ngModel)]="product.price[0].supermarketName">
                 <ion-select-option value="Lider">Lider</ion-select-option>
                 <ion-select-option value="Jumbo">Jumbo</ion-select-option>
                 <ion-select-option value="Unimarc">Unimarc</ion-select-option>
@@ -65,15 +65,17 @@
         </div>
         <div padding>
           <ion-item>
-            <ion-input type="number" placeholder="Precio" #price></ion-input>
+            <ion-input type="number" placeholder="Precio" [(ngModel)]="product.price[0].value"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input required="true" disabled="false" type="text" placeholder="Codigo de Barras (Manualmente)" #barcode></ion-input>
+            <ion-button *ngIf="isBarCode" color="success" size="large" expand="block" (click)="scanToAdd()">Codigo de Barras</ion-button>
+            <ion-button *ngIf="isBarCode" color="success" size="large" expand="block" (click)="isBarCode=false">Ingresar Manualmente</ion-button>
+            <ion-input *ngIf="!isBarCode" required="true" disabled="false" type="text" placeholder="Codigo de Barras" [(ngModel)]="product.serial"></ion-input>
+            <ion-button *ngIf="!isBarCode" color="success" size="large" expand="block" (click)="isBarCode=true">Scanner</ion-button>
           </ion-item>
         </div>
         <div padding>
-          
-          <ion-button color="success" size="large" expand="block" (click)="create_product({ name: name.value, brand: brand.value, serial: barcode.value, picture: 'https://superimage.sfo2.digitaloceanspaces.com/1024px-No_image_available.svg.png', price: [{supermarketName: super.value, value: price.value}]})">Add</ion-button>
+          <ion-button color="success" size="large" expand="block" (click)="create_product()">Add</ion-button>
         </div>
       </ion-col>
     </ion-row>

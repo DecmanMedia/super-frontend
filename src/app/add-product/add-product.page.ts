@@ -19,6 +19,19 @@ export class AddProductPage implements OnInit {
 
   //Barcode Scanner
   barcodeScannerOptions : BarcodeScannerOptions = {showTorchButton:true}
+  public isBarCode = true;
+
+  //Create Product
+  public product = { 
+    name: "", 
+    brand: "", 
+    serial: 0, 
+    picture: 'https://superimage.sfo2.digitaloceanspaces.com/1024px-No_image_available.svg.png', 
+    price: [{
+      supermarketName: "", 
+      value: 0
+    }]
+  }
 
   constructor(
     private productService: ProductServiceService,
@@ -36,6 +49,15 @@ export class AddProductPage implements OnInit {
     
   }
 
+  //Scan Bracode for Add product
+  scanToAdd(){
+    this.barcodeScanner.scan(this.barcodeScannerOptions).then(barcodeData => {
+      this.product.serial= +barcodeData["text"]
+     }).catch(err => {
+         console.log('Error', err);
+     });
+  }
+
   onSearch(){
     this.router.navigateByUrl(`/search-result/${this.searchInput}`)
     console.log(this.searchInput);
@@ -44,10 +66,8 @@ export class AddProductPage implements OnInit {
   ngOnInit() {
   }
 
-  public create_product(input: any) {
-    console.log("input: ")
-    console.log(input)
-    this.productService.addProduct(input).subscribe(product => {
+  public create_product() {
+    this.productService.addProduct(this.product).subscribe(product => {
       console.log("result: ")
       console.log(product)
     })
