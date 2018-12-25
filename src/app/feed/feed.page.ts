@@ -3,7 +3,6 @@ import { NavController,NavParams } from '@ionic/angular';
 import { RouterModule, Routes} from '@angular/router'
 import { ProductServiceService } from '../product-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ScanService } from '../scan.service';
 import { BarcodeScanner,BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
@@ -28,7 +27,6 @@ export class FeedPage implements OnInit {
   constructor(
     private productService: ProductServiceService, 
     private router: Router,
-    private scanService: ScanService,
     private barcodeScanner: BarcodeScanner) {
   }
   onSearch(){
