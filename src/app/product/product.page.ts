@@ -5,6 +5,7 @@ import { ShoppingListService } from '../shopping-list.service';
 import { BarcodeScanner,BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 import {List} from '@ionic/angular';
 import { async } from 'q';
+import { SupermarketService } from '../supermarket.service';
 
 
 @Component({
@@ -16,19 +17,16 @@ import { async } from 'q';
   ]
 })
 
-
-
-
-
 export class ProductPage implements OnInit {
-  //Product informacion variables
+  //VARIABLES
+  //Product informacion 
   private productSerial: any;
   public product: any;
-  //Search neccesary variables
+  //Search neccesary
   public isSearchbarOpened = false;
   private searchInput: any="";
   //Barcode Scanner
-  barcodeScannerOptions : BarcodeScannerOptions = {showTorchButton:true}
+  barcodeScannerOptions : BarcodeScannerOptions = {showTorchButton:true};
 
   @ViewChild('slidingList') slidingList: List;
 
@@ -38,6 +36,7 @@ export class ProductPage implements OnInit {
     private router: Router,
     public shoppingService: ShoppingListService,
     private barcodeScanner: BarcodeScanner,
+    private supermarketService: SupermarketService
     ) { }
 
   onSearch(){
@@ -76,6 +75,17 @@ export class ProductPage implements OnInit {
     console.log(this.shoppingService.GlobalShoppingList)
   }
 
+  getLogo(name: any){
+    this.supermarketService.getSupermarketLogo(name).subscribe(
+      data=>{
+        console.log(data);
+        const response = (data as String);
+        return response;
+      }, error => {
+        console.log(error);
+      }
+    )
+  }
   
 
   ngOnInit(){

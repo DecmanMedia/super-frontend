@@ -54,13 +54,7 @@
         <ion-item-sliding *ngFor="let price of product.price" >
           <ion-item>
             <ion-avatar item-start>
-                <img *ngIf="price.supermarketName=='Jumbo'" src="https://superimage.sfo2.digitaloceanspaces.com/jumbo.png">
-                <img *ngIf="price.supermarketName=='Lider'"src="https://superimage.sfo2.digitaloceanspaces.com/RTgsbMBj_400x400.jpg">
-                <img *ngIf="price.supermarketName=='Unimarc'"src="https://superimage.sfo2.digitaloceanspaces.com/unimarc.jpg">
-                <img *ngIf="price.supermarketName=='SantaIsabel'"src="https://superimage.sfo2.digitaloceanspaces.com/Santa%20Isabel.png">
-                <img *ngIf="price.supermarketName=='Mayorista 10'"src="https://superimage.sfo2.digitaloceanspaces.com/Mayorista10.jpg">
-                <img *ngIf="price.supermarketName=='Monserrat'"src="https://superimage.sfo2.digitaloceanspaces.com/Monserrat.png">
-                <img *ngIf="price.supermarketName=='Acuenta'"src="https://superimage.sfo2.digitaloceanspaces.com/Acuenta.svg">
+                <img src="getLogo(price.supermarketName)">
                 
             </ion-avatar>
              <div>

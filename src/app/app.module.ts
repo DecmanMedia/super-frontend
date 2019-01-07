@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductServiceService } from './product-service.service';
+import { SupermarketService} from './supermarket.service';
 
 import { HttpClientModule }  from '@angular/common/http';
 
@@ -32,6 +33,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
     StatusBar,
     SplashScreen,
     ProductServiceService,
+    SupermarketService,
     BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
