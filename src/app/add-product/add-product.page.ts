@@ -68,7 +68,8 @@ export class AddProductPage implements OnInit {
     console.log(this.searchInput);
   }
   
-  getSupermarkets(){
+  
+  ngOnInit() {
     this.supermarketService.getSupermarkets().subscribe(
       data=>{
         console.log(data);
@@ -78,9 +79,6 @@ export class AddProductPage implements OnInit {
         console.log(error);
       }
     )
-  }
-  
-  ngOnInit() {
   }
 
   public create_product() {
