@@ -2,6 +2,9 @@
     <ion-toolbar>
         <ion-buttons slot="start">
           <ion-back-button defaultHref="home"></ion-back-button>
+          <ion-button ion-button icon-only *ngIf="isSearchbarOpened" (click)="goToScan()">
+            <ion-icon name="barcode"></ion-icon>
+          </ion-button>
         </ion-buttons>
         <ion-title *ngIf="!isSearchbarOpened">
           {{product.name}}

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductServiceService } from '../product-service.service';
 import { ShoppingListService } from '../shopping-list.service';
+import { BarcodeScanner,BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 import {List} from '@ionic/angular';
 import { async } from 'q';
 
@@ -26,6 +27,8 @@ export class ProductPage implements OnInit {
   //Search neccesary variables
   public isSearchbarOpened = false;
   private searchInput: any="";
+  //Barcode Scanner
+  barcodeScannerOptions : BarcodeScannerOptions = {showTorchButton:true}
 
   @ViewChild('slidingList') slidingList: List;
 
@@ -33,12 +36,23 @@ export class ProductPage implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductServiceService,
     private router: Router,
-    public shoppingService: ShoppingListService
+    public shoppingService: ShoppingListService,
+    private barcodeScanner: BarcodeScanner,
     ) { }
 
   onSearch(){
     this.router.navigateByUrl(`/search-result/${this.searchInput}`)
     console.log(this.searchInput);
+  }
+
+  //Scan Barcode for search
+  goToScan(){
+    this.barcodeScanner.scan(this.barcodeScannerOptions).then(barcodeData => {
+      this.router.navigateByUrl(`/product/${barcodeData["text"]}`)
+     }).catch(err => {
+         console.log('Error', err);
+     });
+    
   }
 
   async delete() {

@@ -3,6 +3,9 @@
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
+      <ion-button ion-button icon-only *ngIf="isSearchbarOpened" (click)="goToScan()">
+        <ion-icon name="barcode"></ion-icon>
+      </ion-button>
       <ion-searchbar 
         animated
         showCancelButton="true" 

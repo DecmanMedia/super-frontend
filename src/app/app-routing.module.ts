@@ -32,6 +32,7 @@ const routes: Routes = [
     loadChildren: './cart/cart.module#CartPageModule' 
   }
 
+
 ];
 
 @NgModule({
