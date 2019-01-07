@@ -26,11 +26,11 @@ export class AddProductPage implements OnInit {
   public product = { 
     name: "", 
     brand: "", 
-    serial: 0, 
+    serial: null, 
     picture: 'https://superimage.sfo2.digitaloceanspaces.com/1024px-No_image_available.svg.png', 
     price: [{
       supermarketName: "", 
-      value: 0
+      value: null
     }]
   }
 
@@ -61,6 +61,7 @@ export class AddProductPage implements OnInit {
      }).catch(err => {
          console.log('Error', err);
      });
+     this.isBarCode = false;
   }
 
   onSearch(){

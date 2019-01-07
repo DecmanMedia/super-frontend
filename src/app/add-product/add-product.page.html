@@ -61,11 +61,23 @@
           <ion-item>
             <ion-input type="number" placeholder="Precio" [(ngModel)]="product.price[0].value"></ion-input>
           </ion-item>
-          <ion-item>
-            <ion-button *ngIf="isBarCode" color="success" size="large" expand="block" (click)="scanToAdd()">Codigo de Barras</ion-button>
-            <ion-button *ngIf="isBarCode" color="success" size="large" expand="block" (click)="isBarCode=false">Ingresar Manualmente</ion-button>
-            <ion-input *ngIf="!isBarCode" required="true" disabled="false" type="text" placeholder="Codigo de Barras" [(ngModel)]="product.serial"></ion-input>
-            <ion-button *ngIf="!isBarCode" color="success" size="large" expand="block" (click)="isBarCode=true">Scanner</ion-button>
+          <ion-item *ngIf="isBarCode">
+            <ion-label>
+              <h2>Codigo de Barra</h2>
+            </ion-label>
+            <ion-button fill="clear" (click)="isBarCode=false" slot="end">Manual</ion-button>
+          </ion-item>
+          <ion-item *ngIf="isBarCode">
+            <ion-button fill="outline" (click)="scanToAdd()">Scanear</ion-button>
+          </ion-item>
+          <ion-item *ngIf="!isBarCode">
+            <ion-label>
+              <h2>Codigo de Barra</h2>
+            </ion-label>
+            <ion-button fill="outline" (click)="scanToAdd()" slot="end">Scanear</ion-button>  
+          </ion-item>
+          <ion-item *ngIf="!isBarCode">
+            <ion-input required="true" disabled="false" type="number" placeholder="Codigo de Barras" [(ngModel)]="product.serial"></ion-input>
           </ion-item>
         </div>
         <div padding>
