@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductServiceService } from '../product-service.service';
+import { SupermarketService } from '../supermarket.service';
 import { Router } from '@angular/router';
 import { BarcodeScanner,BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 
@@ -33,10 +34,14 @@ export class AddProductPage implements OnInit {
     }]
   }
 
+  //Supermarket
+  public listSupermarket: Array<any>;
+
   constructor(
     private productService: ProductServiceService,
     private barcodeScanner: BarcodeScanner,
-    private router: Router
+    private router: Router,
+    private supermarketService: SupermarketService
     ) { }
 
   //Scan Barcode for search
@@ -59,8 +64,20 @@ export class AddProductPage implements OnInit {
   }
 
   onSearch(){
-    this.router.navigateByUrl(`/search-result/${this.searchInput}`)
+    this.router.navigateByUrl(`/search-result/${this.searchInput}`);
     console.log(this.searchInput);
+  }
+  
+  getSupermarkets(){
+    this.supermarketService.getSupermarkets().subscribe(
+      data=>{
+        console.log(data);
+        const response = (data as any);
+        this.listSupermarket = response;
+      }, error => {
+        console.log(error);
+      }
+    )
   }
   
   ngOnInit() {
